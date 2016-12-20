@@ -58,16 +58,16 @@ tidydata <- cbind(allsubs,activity,allx)
 
 #Second Data Set 
 
-library(dplyr)  #need for the function summarise_each
+library(dplyr)  ##need for the function summarise_each
 
-tidytbl <- tbl_df(tidydata)  #reformatting data 
+tidytbl <- tbl_df(tidydata)  ##reformatting data 
 
 tidytbl_by_volunteer_activity <- group_by(tidytbl, volunteer_number,activity, add = TRUE)
-#both the 1:30 volunteers are grouped, the secondary group is each activity, add = TRUE to prevent overriding groups
+##the 30 volunteers are grouped, the secondary group is each activity, add = TRUE  prevents overriding groups 
 
 #FINAL TABLE
 tidy_sum <- summarise_each(tidytbl_by_volunteer_activity, funs(mean))  
-#for each volunteer, there are six activities, for 180 observations, the average of each columns was found 
-#tidy_sum is a 180 x 88 tbl_df 
+##for each volunteer, there are six activities, for 180 observations, the average of each columns was found 
+##tidy_sum is a 180 x 88 tbl_df 
 
 
